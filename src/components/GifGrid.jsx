@@ -1,12 +1,14 @@
 import { GifItem } from "./GifItem";
 import { useFetchGif } from "../hooks/useFetchGif";
+import { useState } from "react";
 
 export const GifGrid=({ category })=> {
   // Se generó el custoHook
 
-  const { gifs, isLoading } = useFetchGif(category);
+  const { gifs, isLoading, offset, setOffset } = useFetchGif(category);
+  //const {offset, setOffset} = useState(category.offset)
 
-  // console.log({ gifs, isLoading });
+  //console.log({ gifs, isLoading, offset });
 
   return (
     <>
@@ -18,13 +20,13 @@ export const GifGrid=({ category })=> {
       <div className="card-grid">
         {gifs.map((gif) => {
           return (
-            <GifItem key={gif.id} {...gif} />
+            <GifItem key={gif.id} {...gif}/>
             //  {...gif} es igual al  de abajo, manda todas las props de gif.
             // El anterior se usa cuando tienes muchas propiedades por mandar.
             //  gif={gif}
           );
         })}
-        {/* <button
+        <button
           onClick={() => {
             setOffset(offset - 10);
           }}
@@ -38,7 +40,7 @@ export const GifGrid=({ category })=> {
           }}
         >
           Siguiente --
-        </button> */}
+        </button>
       </div>
     </>
   );

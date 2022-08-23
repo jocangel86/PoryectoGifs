@@ -35,7 +35,9 @@ useEffect(() => {
 
     return{
         gifs:gifs,
-        isLoading:isLoading
+        isLoading:isLoading,
+        offset:offset,
+        setOffset:setOffset
     }
 }
 

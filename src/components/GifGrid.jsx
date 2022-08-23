@@ -26,6 +26,7 @@ export const GifGrid=({ category })=> {
             //  gif={gif}
           );
         })}
+                
         <button
           onClick={() => {
             setOffset(offset - 10);

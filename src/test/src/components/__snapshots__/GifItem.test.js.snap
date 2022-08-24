@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pruebas en GiftItem Debe hacer match con el Snapshot PropTypes 1`] = `
+<div>
+  <div
+    class="card"
+  >
+    <p>
+      Hola mundo
+    </p>
+    <img
+      alt="Hola mundo"
+      src="https://github.com/"
+    />
+  </div>
+</div>
+`;

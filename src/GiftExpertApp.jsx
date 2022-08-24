@@ -17,7 +17,6 @@ export const GiftExpertApp = () => {
     // const duplicado = categories.filter(category=>category===inputValue);
     // console.log('duplicado:'+duplicado);
     // if(duplicado.length!=0) return;
-
     if (categories.includes(inputValue)) return;
 
     setCategories([...categories, inputValue]);
@@ -32,11 +31,16 @@ export const GiftExpertApp = () => {
       <AddCategories
         // setCategories={setCategories}
         onAddCategorie={(event) => onAddCategorie(event)}
+        setCategories={setCategories}
       />
 
       {/* Listado de Categorías */}
       {categories.map((category) => (
-        <GifGrid key={category} category={category} />
+        <GifGrid 
+              key={category} 
+              category={category} 
+              setCategories={setCategories}
+              categories={categories}/>
       ))}
       {/* <button onClick={onAddCategorie}>Agregar</button> */}
     </>

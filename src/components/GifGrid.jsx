@@ -1,14 +1,27 @@
 import { GifItem } from "./GifItem";
 import { useFetchGif } from "../hooks/useFetchGif";
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
-export const GifGrid=({ category })=> {
+export const GifGrid=({ category, categories, setCategories })=> {
   // Se generó el custoHook
 
   const { gifs, isLoading, offset, setOffset } = useFetchGif(category);
   //const {offset, setOffset} = useState(category.offset)
 
   //console.log({ gifs, isLoading, offset });
+
+  const eliminaCategoria = (nombre)=>{
+   
+
+    //Filtrar para eliminar del array la que recibo
+    let newCategories = categories.filter(cat => cat !== nombre ) 
+    //Actualizar estado listado
+    setCategories(newCategories)
+
+  }
+
+
 
   return (
     <>
@@ -26,14 +39,12 @@ export const GifGrid=({ category })=> {
             //  gif={gif}
           );
         })}
-                
-        <button
-          onClick={() => {
-            setOffset(offset - 10);
-          }}
-        >
-          -- Anterior
-        </button>
+
+        {offset>0 &&     
+        <button onClick={() => { setOffset(offset - 10); }}>-- Anterior </button>
+        }
+        |
+        <button onClick={() => {eliminaCategoria(category);}}>-- Eliminar -- </button>
         |
         <button
           onClick={() => {
@@ -45,4 +56,8 @@ export const GifGrid=({ category })=> {
       </div>
     </>
   );
+}
+
+GifGrid.propTypes={
+  category: PropTypes.string.isRequired,
 }
